@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio1</title>
+</head>
+<body>
+    <h1>Prueba de Métodos de Salida en JavaScript</h1>
+    <p>Contenido previo...</p>
+
+    <!-- Este div es donde se escribirá el texto del botón 3 -->
+    <div id="contenedor"></div>
+
+    <button onclick="VentanaAlerta()">1. Ventana Alerta</button>
+    <button onclick="MensajeConsola()">2. Mensaje Consola</button>
+    <button onclick="ModificarDOM()">3. Modificar DOM</button>
+    <button onclick="DocumentWrite()">4. Document Write</button>
+
+    <script>
+        function VentanaAlerta(){
+            window.alert("Esto es una alerta.");
+        }
+
+        function MensajeConsola(){
+            // new va en minúscula
+            console.log("Hola, hola. " + new Date().toLocaleTimeString());
+            alert("Mensaje enviado.");
+        }
+
+        function ModificarDOM(){
+            // Primero se busca el elemento y luego se le cambia el innerHTML
+            document.getElementById("contenedor").innerHTML = "<p>Contenido modificado en el DOM.</p>";
+        }
+
+        function DocumentWrite(){
+            document.write("Utilización de document.write.");
+        }
+    </script>
+</body>
+</html>

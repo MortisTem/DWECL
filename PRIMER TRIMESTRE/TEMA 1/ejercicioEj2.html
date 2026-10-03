@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio2</title>
+    <link rel="stylesheet" href="estylesEj2.css">
+</head>
+<body>
+    <h1 id="titulo">Título Original</h1>
+    <p id="parrafo">Este es el texto inicial del párrafo.</p>
+
+    <button onclick="cambiarTexto()">Cambiar Texto</button>
+    <button onclick="cambiarEstilosCSS()">Cambiar Estilos CSS</button>
+
+    <script>
+        function cambiarTexto(){
+            document.getElementById("titulo").innerHTML = "¡El título ha sido modificado!";
+            document.getElementById("parrafo").innerHTML = "El contenido del párrafo ha sido modificado.";
+        }
+
+        function cambiarEstilosCSS(){
+            document.getElementById("titulo").classList.add("tituloRojo");
+            document.getElementById("parrafo").classList.add("parrafoAzul");
+        }
+    </script>
+</body>
+</html>

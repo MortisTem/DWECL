@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <h1>Test de verdadero o falso</h1>
+
+    <p id="frase1">1. JavaScript y Java son el mismo lenguaje.</p>
+    <button onclick="comprobar(1, true, false)">Verdadero</button>
+    <button onclick="comprobar(1, false, false)">Falso</button>
+
+    <p id="frase2">2. HTML es un lenguaje de marcas.</p>
+    <button onclick="comprobar(2, true, true)">Verdadero</button>
+    <button onclick="comprobar(2, false, true)">Falso</button>
+
+    <p id="frase3">3. console.log muestra mensajes en la consola del navegador.</p>
+    <button onclick="comprobar(3, true, true)">Verdadero</button>
+    <button onclick="comprobar(3, false, true)">Falso</button>
+
+    <p id="frase4">4. Con "let" se puede declarar una variable en JavaScript.</p>
+    <button onclick="comprobar(4, true, true)">Verdadero</button>
+    <button onclick="comprobar(4, false, true)">Falso</button>
+
+    <p id="frase5">5. CSS se usa para crear la estructura de una página.</p>
+    <button onclick="comprobar(5, true, false)">Verdadero</button>
+    <button onclick="comprobar(5, false, false)">Falso</button>
+
+    <p id="frase6">6. Un array empieza en la posición 1.</p>
+    <button onclick="comprobar(6, true, false)">Verdadero</button>
+    <button onclick="comprobar(6, false, false)">Falso</button>
+
+    <p id="frase7">7. innerHTML permite cambiar el contenido de un elemento.</p>
+    <button onclick="comprobar(7, true, true)">Verdadero</button>
+    <button onclick="comprobar(7, false, true)">Falso</button>
+
+    <script>
+        // numero: qué frase es | respuesta: lo que pulsa el usuario | correcta: la solución
+        function comprobar(numero, respuesta, correcta) {
+            let frase = document.getElementById("frase" + numero);
+
+            if (respuesta == correcta) {
+                frase.style.color = "green";
+            } else {
+                frase.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

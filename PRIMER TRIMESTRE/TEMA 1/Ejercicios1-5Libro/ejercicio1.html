@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Page Design</title>
+</head>
+<body>
+    <h1 id="titulo">Título original</h1>
+
+    <button onclick="sayHello()">Saludar</button>
+    <button onclick="modificarTitulo()">Modificar título</button>
+
+    <script>
+        function sayHello() {
+            document.write("Hello, Coding Ground!");
+        }
+
+        function modificarTitulo() {
+            document.getElementById("titulo").innerHTML = "Modificando el contenido";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h1>Secuencia de imágenes</h1>
+
+    <!-- Al hacer clic en la imagen pasa a la siguiente -->
+    <img id="imagen" src="rojo.jpg" width="300" onclick="siguiente()">
+
+    <script>
+        // Lista con los nombres de las fotos
+        let fotos = ["rojo.jpg", "verde.jpg", "azul.jpg", "morado.jpg"];
+
+        // Posición de la foto actual (0 = la primera)
+        let indice = 0;
+
+        function siguiente() {
+            indice++;
+
+            // Si nos pasamos de la última, volvemos a la primera
+            if (indice == fotos.length) {
+                indice = 0;
+            }
+
+            document.getElementById("imagen").src = fotos[indice];
+        }
+    </script>
+</body>
+</html>
