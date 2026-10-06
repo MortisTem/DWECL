@@ -2,13 +2,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejercicio 3</title>
 </head>
 <body>
     <script>
-        //Ejecuta las siguientes dos líneas de código y comprueba el contenido de la variable var. Interpreta y explica los resultados:
+        var dato = "Ronaldo " + 5 + 5;
+        document.write("Primera: " + dato + "<br>");
+
+        var dato = 5 + 5 + " Ronaldo ";
+        document.write("Segunda: " + dato);
+
+        //Explicación:
+        //JS lee de izquierda a derecha.
+        //1) "Ronaldo " + 5 + 5 -> "Ronaldo 5" -> "Ronaldo 55"
+        //Como empieza con texto, los números se pegan como texto.
+        //2) 5 + 5 + " Ronaldo " -> 10 + " Ronaldo " -> "10 Ronaldo "
+        //Primero suma los números y al final los une con el texto.
     </script>
-    
 </body>
 </html>

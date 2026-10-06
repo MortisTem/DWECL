@@ -3,33 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Actividad 2.1</title>
 </head>
 <body>
     <script>
         //Suma.
-        function suma(a, b) {
-        return a + b;
-
-        var a = suma(3,3); // c valdrá 6
-        a = suma(a,3); // ahora c valdrá 9
-        var text = “El valor de a será ahora: “ + a;
+        function suma(z, k) {
+            return z + k;
+        }
 
         //Resta.
-        function resta(z,k){
+        function resta(z, k) {
             return z - k;
         }
 
         //Multiplicación.
-}       function multiplicacion(z, k){
+        function multiplicacion(z, k) {
             return z * k;
         }
 
         //División.
-        function division(z, k){
+        function division(z, k) {
             return z / k;
         }
+
+        let z = suma(3, 3);
+        z = suma(z, 3);
+        let text = "El valor de z será ahora: " + z;
+        console.log(text);
+
+        console.log("Resta: " + resta(10, 4));
+        console.log("Multiplicación: " + multiplicacion(5, 3));
+        console.log("División: " + division(20, 4));
     </script>
-    
 </body>
 </html>
