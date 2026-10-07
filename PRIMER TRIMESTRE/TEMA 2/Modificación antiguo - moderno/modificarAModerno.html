@@ -2,72 +2,59 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Tema 2 - Eventos con 'on...'</title>
+  <title>Tema 2 - Eventos modernos</title>
 </head>
 <body>
 
-  <h2>Eventos con prefijo 'on'</h2>
+  <h2>Eventos con addEventListener</h2>
 
-  <!-- ========================================== -->
-  <!-- EVENTOS DE RATÓN                           -->
-  <!-- ========================================== -->
-  
-  <hr>
-  
-  <!-- Ratón 1: onclick -->
-  <!-- <button onclick="alHacerClic()">1. Hacer clic aquí</button> -->
-  <button id="alHacerClic">1. Hacer clic aquí.</button>
+  <!--Lo que he hecho es ponerlo con id en vez de con onclick.-->
+  <button id="boton">1. Hacer clic aquí</button>
 
-  <hr>
+  <br><br>
 
-  <!-- Ratón 2: onmouseover -->
-  <div onmouseover="alPasarElRaton(this)" style="background: #e2e8f0; padding: 10px; width: 250px;">
+  <!---Aquí lo mismo, se usa id en vez de onmouseover.-->
+  <div id="caja" style="background: #e2e8f0; padding: 10px; width: 250px;">
     2. Pasa el ratón por encima de esta caja
   </div>
 
   <hr>
 
-  <!-- ========================================== -->
-  <!-- EVENTOS DE TEXTO / TECLADO                 -->
-  <!-- ========================================== -->
+  <!--Id en vez de oninput.-->
+  <label>3. Escribe tu nombre (input):</label><br>
+  <input type="text" id="nombre">
 
-  <!-- Texto 1: oninput (se activa mientras el usuario escribe) -->
-  <label>3. Escribe tu nombre (oninput):</label><br>
-  <input type="text" oninput="alEscribirTexto(this.value)">
+  <br><br>
 
-  <hr>
+  <!--Id en vez de onkeyup.-->
+  <label>4. Escribe un texto (keyup):</label><br>
+  <input type="text" id="texto">
 
-  <!-- Texto 2: onkeyup (se activa al soltar una tecla) -->
-  <label>4. Escribe un texto (onkeyup):</label><br>
-  <!-- <input type="text" onkeyup="alSoltarTecla(this.value)"> -->
-  <input type"text" onmouseup="alSoltarTecla(this.value)">
-
-  <hr>
-
-  <!-- Salida de texto en pantalla -->
   <p id="salida"></p>
 
   <script>
-    let salida = document.getElementById("salida");
+    //Const porque estos elementos no los cambiaré.
+    const salida = document.getElementById("salida");
+    const boton = document.getElementById("boton");
+    const caja = document.getElementById("caja");
+    const nombre = document.getElementById("nombre");
+    const texto = document.getElementById("texto");
 
-    // Funciones asociadas a los eventos de ratón
-    function alHacerClic() {
+    boton.addEventListener("click", function () {
       salida.innerText = "¡Has hecho clic en el botón!";
-      document.getElementById(salida).innerHTML("¡Has hecho clic en el botón!");
-    }
+    });
 
-    function alPasarElRaton(caja) {
+    caja.addEventListener("mouseover", function () {
       caja.innerText = "¡El ratón está sobre la caja!";
-    }
+    });
 
-    // Funciones asociadas a los eventos de texto
-    function alEscribirTexto(valor) {
-      salida.innerText = "Nombre en tiempo real: " + valor;
-    }
+    nombre.addEventListener("input", function () {
+      salida.innerText = "Nombre en tiempo real: " + nombre.value;
+    });
 
-    function alSoltarTecla(valor) {
-      console.log("Número de caracteres (Consola F12): " + valor.length);
-    }
+    texto.addEventListener("keyup", function () {
+      console.log("Número de caracteres (Consola F12): " + texto.value.length);
+    });
   </script>
 
 </body>
