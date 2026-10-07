@@ -9,7 +9,6 @@
     <h1>Prueba de Métodos de Salida en JavaScript</h1>
     <p>Contenido previo...</p>
 
-    <!-- Este div es donde se escribirá el texto del botón 3 -->
     <div id="contenedor"></div>
 
     <button onclick="VentanaAlerta()">1. Ventana Alerta</button>
@@ -23,13 +22,11 @@
         }
 
         function MensajeConsola(){
-            // new va en minúscula
             console.log("Hola, hola. " + new Date().toLocaleTimeString());
             alert("Mensaje enviado.");
         }
 
         function ModificarDOM(){
-            // Primero se busca el elemento y luego se le cambia el innerHTML
             document.getElementById("contenedor").innerHTML = "<p>Contenido modificado en el DOM.</p>";
         }
 
