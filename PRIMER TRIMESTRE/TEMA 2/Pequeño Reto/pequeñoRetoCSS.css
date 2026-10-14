@@ -1,50 +1,77 @@
-#fondo{
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f4f4f9;
-    text-align: center;
+body {
+  font-family: system-ui, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-#primerh1{
-    color: black;
+h1 {
+  text-align: center;
 }
 
-.enlaces{
-    margin-bottom: 20px;
+.panel {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
 }
 
-.barra{
-    margin: 0 5px;
-    color: grey;
+input {
+  padding: 6px;
+  font-size: 15px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
 }
 
-.cajaTabla{
-    border: 1px solid gray; 
-    padding: 20px;            
-    background-color: white; 
-    display: inline-block;    
-    border-radius: 8px;       
+input[type="number"] {
+  width: 60px;
 }
 
-.tituloTabla{
-    margin-top: 0;                
-    color: black;
-    text-align: left;
+button {
+  padding: 7px 12px;
+  margin: 4px 2px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  background: #1d4ed8;
+  color: white;
 }
 
-#table{
-    border-collapse: collapse;
+button:hover {
+  background: #1e40af;
 }
 
-th{
-    background-color: rgb(125, 160, 189);
-    color: black;
-    padding: 10px 15px;
-    text-align: left;
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
-td{
-    border: 1px solid #ccc;
-    padding: 10px 15px;
-    color: black;
+th, td {
+  border: 1px solid #cbd5e1;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background: #e2e8f0;
+}
+
+/* Notas suspensas y aprobadas */
+.suspenso {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.aprobado {
+  background: #dcfce7;
+  color: #166534;
+}
+
+#mensaje {
+  font-weight: bold;
+  margin-top: 8px;
 }
