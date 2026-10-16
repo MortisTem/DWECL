@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boletín de notas - Notas</title>
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .panel {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    input {
+      padding: 6px;
+      font-size: 15px;
+      border: 1px solid #94a3b8;
+      border-radius: 6px;
+    }
+
+    input[type="number"] {
+      width: 60px;
+    }
+
+    button {
+      padding: 7px 12px;
+      margin: 4px 2px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      background: #1d4ed8;
+      color: white;
+    }
+
+    button:hover {
+      background: #1e40af;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #e2e8f0;
+    }
+
+    /* Notas suspensas y aprobadas */
+    .suspenso {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .aprobado {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    #mensaje {
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    /* Cuadro oscuro del resultado */
+    #resultado {
+      background: #0f172a;
+      color: #ffffff;
+      font-family: monospace;
+      padding: 14px;
+      border-radius: 8px;
+      white-space: pre-line;
+      min-height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Boletín de notas de la clase</h1>
+
+<!-- Tabla de notas (se dibuja desde JavaScript) -->
+<div class="panel">
+  <h2>Notas por trimestre</h2>
+  <div id="tabla"></div>
+</div>
+
+<!-- Añadir alumno -->
+<div class="panel">
+  <h2>Añadir alumno</h2>
+  Nombre: <input type="text" id="nuevoNombre">
+  1T: <input type="number" id="n1" min="0" max="10">
+  2T: <input type="number" id="n2" min="0" max="10">
+  3T: <input type="number" id="n3" min="0" max="10">
+  <button onclick="anadirAlumno()">Añadir</button>
+  <div id="mensaje"></div>
+</div>
+
+<!-- Consultas -->
+<div class="panel">
+  <h2>Consultas</h2>
+  <button onclick="contarAprobados()">Contar aprobados</button>
+  <button onclick="mejorNotaClase()">Mejor nota de la clase</button>
+  <button onclick="mediaTrimestre()">Media de un trimestre</button>
+  <input type="text" id="select" name="seleccion" list="marcas">
+  <datalist id="marcas">
+    <option value="1º trimestre"></option>
+    <option value="2º trimestre"></option>
+    <option value="3º trimestre"></option>
+  </datalist>
+  <br>
+  <input type="text" id="buscarNombre" placeholder="Nombre del alumno">
+  <button onclick="buscarAlumno()">Buscar alumno</button>
+
+  <h3>Resultado</h3>
+  <div id="resultado"></div>
+</div>
+
+
+<script>
+  // ===== DATOS =====
+  // No se guarda nada: si recargas, vuelve a empezar con estos cinco.
+
+  let alumnos = ["Ana", "Luis", "Marta", "Pablo", "Sara"];
+
+  // Una fila por alumno, una columna por trimestre
+  let notas = [
+    [7, 8, 9],
+    [4, 5, 6],
+    [3, 4, 2],
+    [9, 10, 9],
+    [5, 4, 6]
+  ];
+
+  // ===== FUNCIONES DE CÁLCULO =====
+
+  // Media de un alumno (recorre su fila)
+  function mediaAlumno(fila) {
+    let suma = 0;
+    for (let c = 0; c < notas[fila].length; c++) {
+      suma = suma + notas[fila][c];
+    }
+    return suma / notas[fila].length;
+  }
+
+  // Convierte una nota numérica en texto
+  function calificacion(nota) {
+    if (nota < 5) {
+      return "Insuficiente";
+    } else if (nota < 6) {
+      return "Suficiente";
+    } else if (nota < 7) {
+      return "Bien";
+    } else if (nota < 9) {
+      return "Notable";
+    } else {
+      return "Sobresaliente";
+    }
+  }
+
+  // ===== DIBUJAR LA TABLA =====
+
+  function pintarTabla() {
+    let html = "<table>";
+    html = html + "<tr><th>Alumno</th><th>1T</th><th>2T</th><th>3T</th><th>Media</th><th>Calificación</th></tr>";
+
+    for (let f = 0; f < notas.length; f++) {
+      html = html + "<tr>";
+      html = html + "<td>" + alumnos[f] + "</td>";
+
+      for (let c = 0; c < notas[f].length; c++) {
+        let nota = notas[f][c];
+        // Verde si aprueba, rojo si suspende
+        if (nota >= 5) {
+          html = html + "<td class='aprobado'>" + nota + "</td>";
+        } else {
+          html = html + "<td class='suspenso'>" + nota + "</td>";
+        }
+      }
+
+      let media = mediaAlumno(f);
+      html = html + "<td><b>" + media.toFixed(2) + "</b></td>";
+      html = html + "<td>" + calificacion(media) + "</td>";
+      html = html + "</tr>";
+    }
+
+    html = html + "</table>";
+    document.getElementById("tabla").innerHTML = html;
+  }
+
+  // ===== AÑADIR ALUMNO =====
+
+  function anadirAlumno() {
+    let nombre = document.getElementById("nuevoNombre").value;
+    let n1 = Number(document.getElementById("n1").value);
+    let n2 = Number(document.getElementById("n2").value);
+    let n3 = Number(document.getElementById("n3").value);
+
+    if (nombre === "") {
+      document.getElementById("mensaje").innerHTML = "Error: escribe un nombre.";
+      return;
+    }
+    if (n1 < 0 || n1 > 10 || n2 < 0 || n2 > 10 || n3 < 0 || n3 > 10) {
+      document.getElementById("mensaje").innerHTML = "Error: las notas deben estar entre 0 y 10.";
+      return;
+    }
+
+    // El nombre y sus notas quedan en la misma posición
+    alumnos.push(nombre);
+    notas.push([n1, n2, n3]);
+    document.getElementById("mensaje").innerHTML = "Añadido " + nombre + ". Ahora hay " + alumnos.length + " alumnos.";
+    pintarTabla();
+  }
+
+  // ===== CONSULTAS =====
+
+  // Escribe en el cuadro de resultado
+  function mostrarResultado(texto) {
+    document.getElementById("resultado").innerHTML = texto;
+  }
+
+  // Cuenta los alumnos cuya media es 5 o más
+  function contarAprobados() {
+    let aprobados = 0;
+    for (let f = 0; f < notas.length; f++) {
+      if (mediaAlumno(f) >= 5) {
+        aprobados++;
+      }
+    }
+    mostrarResultado("Aprobados: " + aprobados + " de " + alumnos.length);
+  }
+
+  // Busca la nota más alta de toda la tabla y quién la tiene
+  function mejorNotaClase() {
+    let mejor = -1;
+    let quien = "";
+    let trimestre = 0;
+
+    for (let f = 0; f < notas.length; f++) {
+      for (let c = 0; c < notas[f].length; c++) {
+        if (notas[f][c] > mejor) {
+          mejor = notas[f][c];
+          quien = alumnos[f];
+          trimestre = c + 1;
+        }
+      }
+    }
+    mostrarResultado("Mejor nota: " + mejor + " (" + quien + ", " + trimestre + "º trimestre)");
+  }
+
+  // Media de la clase en el trimestre escrito o elegido en la lista
+  function mediaTrimestre() {
+    let texto = document.getElementById("select").value;
+    let c = -1;
+
+    // Pasamos el texto a la posición de la columna
+    if (texto === "1º trimestre") {
+      c = 0;
+    } else if (texto === "2º trimestre") {
+      c = 1;
+    } else if (texto === "3º trimestre") {
+      c = 2;
+    }
+
+    // Si no ha puesto nada válido, avisamos
+    if (c === -1) {
+      mostrarResultado("Elige un trimestre de la lista.");
+      return;
+    }
+
+    let suma = 0;
+    for (let f = 0; f < notas.length; f++) {
+      suma = suma + notas[f][c];
+    }
+    let media = suma / notas.length;
+    mostrarResultado("Media del " + (c + 1) + "º trimestre: " + media.toFixed(2));
+  }
+
+  // Busca un alumno por su nombre y enseña sus datos
+  function buscarAlumno() {
+    let nombre = document.getElementById("buscarNombre").value.toLowerCase();
+    let posicion = -1;
+
+    for (let f = 0; f < alumnos.length; f++) {
+      if (alumnos[f].toLowerCase() === nombre) {
+        posicion = f;
+      }
+    }
+
+    if (posicion === -1) {
+      mostrarResultado("No se ha encontrado ese alumno.");
+      return;
+    }
+
+    let media = mediaAlumno(posicion);
+    mostrarResultado(
+      alumnos[posicion] + " está en la posición " + posicion + "\n" +
+      "Notas: " + notas[posicion].join(", ") + "\n" +
+      "Media: " + media.toFixed(2) + " (" + calificacion(media) + ")"
+    );
+  }
+
+  // Al cargar la página, dibujamos la tabla
+  pintarTabla();
+</script>
+
+</body>
+</html>
