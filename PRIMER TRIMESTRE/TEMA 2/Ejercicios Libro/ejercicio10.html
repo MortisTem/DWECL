@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rombo hueco</title>
+</head>
+<body>
+    <script>
+        let filas = parseInt(prompt("¿Cuántas filas quieres? (número impar)"));
+        let medio = Math.ceil(filas / 2);
+
+        document.write("<pre>");
+
+        for (let z = 1; z <= medio; z++) {
+
+            for (let k = 1; k <= medio - z; k++) {
+                document.write(" ");
+            }
+
+            document.write("*");
+
+            if (z > 1) {
+                for (let k = 1; k <= (z - 1) * 2 - 1; k++) {
+                    document.write(" ");
+                }
+                document.write("*");
+            }
+
+            document.write("\n");
+        }
+
+        for (let z = medio - 1; z >= 1; z--) {
+
+            for (let k = 1; k <= medio - z; k++) {
+                document.write(" ");
+            }
+
+            document.write("*");
+
+            if (z > 1) {
+                for (let k = 1; k <= (z - 1) * 2 - 1; k++) {
+                    document.write(" ");
+                }
+                document.write("*");
+            }
+
+            document.write("\n");
+        }
+
+        document.write("</pre>");
+    </script>
+</body>
+</html>
