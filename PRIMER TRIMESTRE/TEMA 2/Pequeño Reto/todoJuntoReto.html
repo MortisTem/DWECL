@@ -20,8 +20,8 @@
     }
 
     .panel {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
+      background: white;
+      border: 1px solid gray;
       border-radius: 10px;
       padding: 16px;
       margin-bottom: 16px;
@@ -30,7 +30,7 @@
     input {
       padding: 6px;
       font-size: 15px;
-      border: 1px solid #94a3b8;
+      border: 1px solid gray;
       border-radius: 6px;
     }
 
@@ -84,15 +84,13 @@
       margin-top: 8px;
     }
 
-    /* Cuadro oscuro del resultado */
+    /*Cuadro oscuro del resultado.*/
     #resultado {
-      background: #0f172a;
-      color: #ffffff;
-      font-family: monospace;
-      padding: 14px;
+      background: rgb(31, 30, 30);
+      color: white;
+      font-family: serif;
+      padding: 25px;
       border-radius: 8px;
-      white-space: pre-line;
-      min-height: 20px;
     }
   </style>
 </head>
@@ -117,7 +115,7 @@
   <div id="mensaje"></div>
 </div>
 
-<!-- Consultas -->
+<!-- Consultas, tercera parte.-->
 <div class="panel">
   <h2>Consultas</h2>
   <button onclick="contarAprobados()">Contar aprobados</button>
