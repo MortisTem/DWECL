@@ -6,14 +6,14 @@
 </head>
 <body>
     <script>
-        //Realiza un programa JavaScript que calcule el área y la longitud de una circunferencia de radio 5.
-        const radio = 5;
-
-        let area = 3.14 * radio * radio;
-        let longitud = 2 * 3.14 * radio;
-
-        document.write("El área es: " + area + "<br>");
-        document.write("La longitud es: " + longitud);
+        let dibujo = "";
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j < n; j++) {
+                    dibujo += "*";
+            }
+                dibujo += "\n";
+            }
+            document.getElementById("logo").textContent = dibujo;
     </script>
 </body>
 </html>
