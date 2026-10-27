@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie de idioma</title>
+</head>
+<body>
+    <script>
+        function leerCookie(nombre) {
+    const pares = document.cookie.split("; ");
+    for (let i = 0; i < pares.length; i++) {
+        const partes = pares[i].split("=");
+        if (partes[0] === nombre) return decodeURIComponent(partes[1]);
+    }
+    return null;
+}
+
+document.cookie = "idioma=es; max-age=604800; path=/";
+
+console.log(leerCookie("idioma"));
+
+document.cookie = "idioma=; max-age=0; path=/";
+
+console.log(leerCookie("idioma"));
+    </script>
+    
+</body>
+</html>
