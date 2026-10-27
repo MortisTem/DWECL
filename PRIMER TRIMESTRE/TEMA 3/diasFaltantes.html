@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 2</title>
+</head>
+<body>
+    <script>
+    function diasHasta(fecha) {
+    const hoy = new Date();
+    const dias = Math.ceil((fecha - hoy) / 86400000);
+    return dias;
+}
+
+const cumple = new Date(2026, 11, 25);
+
+console.log("Faltan " + diasHasta(cumple) + " días para mi cumpleaños.");
+</script>
+</body>
+</html>
