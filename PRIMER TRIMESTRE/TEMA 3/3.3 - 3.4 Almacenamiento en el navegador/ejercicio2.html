@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Tema</title>
+</head>
+<body>
+    <p id="tema">Tema</p>
+    <button id="boton">Cambiar tema</button>
+
+    <script>
+        function leerTema() {
+            let tema = localStorage.getItem("tema");
+            if (tema === null) tema = "claro";
+            return tema;
+        }
+
+        function mostrarTema() {
+            document.getElementById("tema").textContent = "Tema actual: " + leerTema();
+        }
+
+        function cambiarTema() {
+            let tema = leerTema();
+            if (tema === "claro") {
+                tema = "oscuro";
+            } else {
+                tema = "claro";
+            }
+            localStorage.setItem("tema", tema);
+            mostrarTema();
+        }
+
+        mostrarTema();
+        document.getElementById("boton").onclick = cambiarTema;
+    </script>
+</body>
+</html>
