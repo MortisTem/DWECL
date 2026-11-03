@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <script>
+        class Libro{
+            constructor(titulo, autor, paginas){
+                this.titulo = titulo;
+                this.autor = autor;
+                this.paginas = paginas;
+            }
+            
+            resumen(){
+                return`${this.titulo} de ${this.autor} (${this.paginas} páginas)`
+            }
+
+        }
+
+        const libro1 = new Libro("El Diario de Greg 10", "Leo Messi", 936)
+
+        for (let clave in libro1){
+            document.write(clave + ": " + libro1[clave] + "<br>"); 
+        }
+
+        document.write(libro1.resumen())
+    </script>
+</body>
+</html>
