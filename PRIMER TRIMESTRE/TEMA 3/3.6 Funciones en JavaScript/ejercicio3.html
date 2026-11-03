@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sumaDigitos(n) {
+            if (n < 10) {
+                return n;
+            }
+            const ultima = n % 10;
+            const resto = Math.floor(n / 10);
+            return ultima + sumaDigitos(resto);
+        }
+
+        function potencia(base, exp) {
+            if (exp === 0) {
+                return 1;
+            }
+            return base * potencia(base, exp - 1);
+        }
+
+        console.log(sumaDigitos(1234)); // 10
+        console.log(potencia(2, 3));    // 8
+    </script>
+</body>
+</html>

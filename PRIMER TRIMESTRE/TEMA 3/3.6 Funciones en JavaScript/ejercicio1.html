@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <script>
+        const notas = [6, 3.5, 8, 9.5, 4, 7];
+
+        const aprobadas = [];  // caja vacía donde guardaremos las aprobadas
+        let suma = 0;          // aquí iremos sumando todas las notas
+        let maxima = 0;        // aquí guardaremos la mejor nota
+
+        for (let i = 0; i < notas.length; i++) {
+        const nota = notas[i];   // la nota que toca ahora
+
+        if (nota >= 5) {         // ¿está aprobada?
+            aprobadas.push(nota);  // sí: la metemos en la caja
+        }
+
+        suma = suma + nota;      // sumamos la nota
+
+        if (nota > maxima) {     // ¿es mejor que la mejor que llevábamos?
+            maxima = nota;         // sí: ahora esta es la mejor
+        }
+        }
+
+        const media = (suma / notas.length).toFixed(2);
+
+        console.log("Aprobadas:", aprobadas);
+        console.log("Media:", media);
+        console.log("Nota más alta:", maxima);
+    </script>
+</body>
+</html>
