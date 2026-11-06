@@ -23,7 +23,6 @@ class Incidencia {
     html += "<p>" + this.descripcion + "</p>";
     html += "<p class='meta'>" + this.autor + " · " + hora + "</p>";
     // TODO RETO 3: añade "hace X min" con this.minutos()
-    html += "<p class='meta'>hace " + this.minutos() + " min</p>";
     ////////////////////////////////////////////////////////////////////
 
     // TODO RETO 1: si NO está resuelta, añade el botón:
@@ -38,10 +37,7 @@ class Incidencia {
 
   // TODO RETO 3: devuelve los minutos que han pasado desde this.fecha
   //   (resta Date.now() - this.fecha y divide entre 60000; redondea con Math.floor)
-  minutos() {
-    const diferencia = Date.now() - this.fecha;
-    return Math.floor(diferencia / 60000);
-  }
+  
   ////////////////////////////////////////////////////////////////////////////////////
 }
 
@@ -89,7 +85,7 @@ function pintar() {
     }
   }
 
-  document.getElementById("resumen").textContent = "Total: " + incidencias.length + " · Pendientes: " + pendientes;
+  document.getElementById("resumen").textContent = "Total: " + incidencias.length;
   //////////////////////////////////////////////////////////////////////
   // TODO RETO 2: cuenta las que NO están resueltas y muéstralo así:
   //   "Total: 4 · Pendientes: 3"
