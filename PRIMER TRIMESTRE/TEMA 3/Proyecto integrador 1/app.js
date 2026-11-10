@@ -23,7 +23,7 @@ class Incidencia {
     html += "<p>" + this.descripcion + "</p>";
     html += "<p class='meta'>" + this.autor + " · " + hora + "</p>";
     // TODO RETO 3: añade "hace X min" con this.minutos()
-    html += "<p class='meta'>Hace " + this.minutos() + " min.</p>";
+    html += "<p class='meta'>hace " + this.minutos() + " min</p>";
     ////////////////////////////////////////////////////////////////////
 
     // TODO RETO 1: si NO está resuelta, añade el botón:
@@ -100,7 +100,7 @@ function avisar(texto) {
   document.getElementById("aviso").textContent = texto;
   setTimeout(() => {
     document.getElementById("aviso").textContent = "";
-  }, 2000);
+  }, 5000);
 }
 
 // =====================================================================
