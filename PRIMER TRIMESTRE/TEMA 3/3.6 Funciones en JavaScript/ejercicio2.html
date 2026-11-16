@@ -8,18 +8,18 @@
 <body>
     <script>
         function capitalizar(texto) {
-            const palabras = texto.split(" ");  // "ana garcía lópez" → ["ana", "garcía", "lópez"]
-            let resultado = "";                 // aquí iremos construyendo la frase
+            const palabras = texto.split(" ");  
+            let resultado = "";                 
 
             for (let i = 0; i < palabras.length; i++) {
-                const palabra = palabras[i];                // la palabra que toca ahora
-                const primera = palabra.slice(0, 1);        // solo la primera letra: "a"
-                const resto = palabra.slice(1);             // todo lo demás: "na"
+                const palabra = palabras[i];                
+                const primera = palabra.slice(0, 1);       
+                const resto = palabra.slice(1);       
 
-                resultado = resultado + primera.toUpperCase() + resto;  // "A" + "na" = "Ana"
+                resultado = resultado + primera.toUpperCase() + resto;  
 
-                if (i < palabras.length - 1) {   // ¿NO es la última palabra?
-                    resultado = resultado + " ";   // sí: añadimos un espacio
+                if (i < palabras.length - 1) { 
+                    resultado = resultado + " ";  
                 }
             }
 

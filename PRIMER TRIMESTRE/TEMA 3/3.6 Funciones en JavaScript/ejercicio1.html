@@ -9,21 +9,21 @@
     <script>
         const notas = [6, 3.5, 8, 9.5, 4, 7];
 
-        const aprobadas = [];  // caja vacía donde guardaremos las aprobadas
-        let suma = 0;          // aquí iremos sumando todas las notas
-        let maxima = 0;        // aquí guardaremos la mejor nota
+        const aprobadas = [];  
+        let suma = 0;        
+        let maxima = 0;      
 
         for (let i = 0; i < notas.length; i++) {
-        const nota = notas[i];   // la nota que toca ahora
+        const nota = notas[i];   
 
-        if (nota >= 5) {         // ¿está aprobada?
-            aprobadas.push(nota);  // sí: la metemos en la caja
+        if (nota >= 5) {        
+            aprobadas.push(nota);  
         }
 
-        suma = suma + nota;      // sumamos la nota
+        suma = suma + nota;     
 
-        if (nota > maxima) {     // ¿es mejor que la mejor que llevábamos?
-            maxima = nota;         // sí: ahora esta es la mejor
+        if (nota > maxima) {     
+            maxima = nota;         
         }
         }
 
